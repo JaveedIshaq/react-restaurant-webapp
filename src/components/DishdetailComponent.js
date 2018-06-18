@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardImg, CardText, CardBody, CardTitle, ListGroup, ListGroupItem } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, CardTitle, ListGroup, ListGroupItem, Breadcrumb, BreadcrumbItem} from 'reactstrap';
+import { Link } from 'react-router-dom';
 
-class Dishdetail extends Component {
-    constructor(props){
-        super(props);
-    }
-    
-    renderDish(dish) {
+
+    function RenderDish(dish) { 
+        {console.log(dish)}
         if(dish != null)
             return(
              <Card>
@@ -23,20 +21,23 @@ class Dishdetail extends Component {
               <div></div>
             );
     }
- 
 
-    render() {
-
-        if(this.props.dish != null)
+    const Dishdetail = (props) => {   
+        if(props.dish != null){
         return(
              <div className="container">
+                            <Breadcrumb>
+                  <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
+                  <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+               </Breadcrumb>
                <div className="row">
+
                 <div className="col-12 col-md-5 m-1">
-                 {this.renderDish(this.props.dish)}
+                 {RenderDish(props.dish)}
                 </div>
                 <div className="col-12 col-md-5 m-1">
                 <h2>Comments</h2>
-                     {this.props.dish.comments.map((review) => {
+                     {props.comments.map((review) => {
                        return (
                         <ListGroup>
                            <ListGroupItem key={review.id}>
@@ -50,12 +51,15 @@ class Dishdetail extends Component {
                </div>
              </div>
             );
-         else
+        }
+         else {
             return(
-              <div></div>
-            );
-    }
-}
+                <div></div>
+              );
+         }
+
+        }
+
 
 
 Dishdetail.propTypes = {
