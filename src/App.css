@@ -32,3 +32,12 @@ address{
 .navbar-dark {
     background-color: #512DA8;
 }
+.media {
+    padding: 15px;
+}
+.media-body {
+    padding-left: 21px;
+}
+.media-heading h6{
+    padding-top: 7px;
+}

@@ -3,6 +3,7 @@ import Home from './HomeComponent';
 import Menu from './MenuComponent';
 import Contact from './ContactComponent';
 import DishDetail from './DishdetailComponent';
+import About from './AboutComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import { DISHES } from '../shared/dishes';
@@ -49,6 +50,7 @@ class Main extends Component {
             <Route path="/home" component={HomePage} />
             <Route exact path="/menu" component={()=> <Menu dishes={this.state.dishes} />} />
             <Route exact path="/contactus" component={Contact} />
+            <Route exact path="/aboutus" component={() => <About leaders={this.state.leaders} /> } />
             <Route path='/menu/:dishId' component={DishWithId} />
             <Redirect to="/home" />
           </Switch>
